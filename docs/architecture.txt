@@ -1,0 +1,48 @@
+To create a VB, some sort of a dictionary will be needed. Most dictionaries on the web (Cambridge, Oxford, Merriam-Webster, etc.)
+require you to pay them some fee per month in order to use their dictionaries (specifically, their APIs). The prices are different:
+some are very expensive, some are not. The big advantage of using their APIs is that their dictionaries are updated regularly.
+On the other hand, the disadvantages:
+1. Monthly fee (the fee will be increased if your traffic goes up).
+2. You're tied up to one's service. It may happen that the service will be shut down and, as a result,
+there will be a need to transfer to a new API.
+3. They may freeze your account that you registered to use their service without any reason.
+
+Given the above statements, a decision has been made that the app will have its own backend. As previously was mentioned,
+in order to do that, a dictionary will be needed. Surfing through the web for a couple of days I stumbled upon the Princeton University
+WordNet dictionary that is free to use and does not require any fees to download or anything like that. It is pretty decent dictionary
+that has almost 150000 words in it as well as support for synonyms, antonyms, example sentences, derivations, etc. Now, let's go over
+advantages and disadvantages of having your own dictionary.
+
+Advantages:
+1. You won't be required to pay some company for their service. In this case, the company is you.
+2. You are not tied up to one's service.
+3. You are the owner of the dictionary, so you can do whatever you want with it.
+
+Disadvantages:
+1. To use your own dictionary, you will need to create a backend. Creating a backend will certainly take some time and efforts, but,
+in the end, it will be justified because you can fulfill all your ideas and features into code.
+2. For a backend to be accessible, you will have to put it on one's server. Obviously, a fee will be required to rent the server on the web,
+but, nowadays, the prices are fairly adequate, so in that area shouldn't be any problems.
+3. Some sort of support for that dictionary will be required (like adding new words to it, improving it, etc.). This can be mitigated
+by transferring some of that to the users' side (like whenever the user searches the word and it does not exist, give him the option of filling
+out the form for a new word by saying something of the like 'Help us make this dictionary even better').
+
+Giving a little bit of thought to it, it should be clear that the option of having your own dictionary is much more compelling than having to pay
+someone for their service. As such, the second option is chosen.
+
+Since I have a ready-to-use backend, there will definitely be a request from users to have some sort of web client. The following question
+arises: if I plan developing a web client, should I host it on the same server where my API resides or on separate server? In order to make
+a decision, we need to enumerate the benefits of both cases.
+
+Same server:
+- Simple deployment
+- Simple scaling (if something is slow, just launch another instance)
+- Single load balancer configuration
+- Simple monitoring
+
+Separate server:
+- API overload will not affect website load time
+- Detailed monitoring
+
+To refute the separate server first benefit, with AWS load balancer it is pretty trivial to stabilize the server workload by simply
+hooking up another server or something like that.

@@ -1,0 +1,20 @@
+Endpoint: v1.0/oauth2/access-token
+Parameters:
+grant_type (required):      One of 'password' or 'refresh_token'.
+client_id (required):       The id of the client making a request.
+client_secret: (required):  The secret of the client making a request.
+scopes (required):          A list of scopes desired by the client.
+email (depends):            If the grant_type parameter has a value of 'password', then this parameter is required.
+                            Otherwise, optional. Specifies the email of a user making a request.
+password (depends):         If the grant_type parameter has a value of 'password', then this parameter is required.
+                            Otherwise, optional. Specifies the password of a user making a request.
+
+Endpoint: v1.0/words/search
+Parameters:
+word (required):                    The word to perform search on.
+part_of_speech (optional):          One of 'adjective', 'adverb', 'noun' or 'verb'.
+                                    Fetches only definitions with the specified part of speech.
+examples_required (optional):       Either 'true' or 'false'. Default is 'false'. Fetches only definitions that have examples.
+synonyms_required (optional):       Either 'true' or 'false'. Default is 'false'. Fetches only definitions that have synonyms.
+antonyms_required (optional):       Either 'true' or 'false'. Default is 'false'. Fetches only definitions that have antonyms.
+derivations_required (optional):    Either 'true' or 'false'. Default is 'false'. Fetches only definitions that have derivations.

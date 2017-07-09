@@ -1,0 +1,130 @@
+DONE:
+- DATABASE ARCHITECTURE.
+- Bare bones.
+- Basic routing.
+- Words endpoints.
+- JSON output.
+- Pagination.
+- Input sanitizing.
+- Remove PHP implicit data types (e.g., int, string. array).
+- By using Google TTS, create an app that will generate audio pronunciations for all words in the dictionary
+  (including different accents, i.e. British, American, Australian) and upload it to the server.
+  When having the audio files, include them in the JSON output. In the end, over 22.7 GB (442,843 files) of data
+  has been generated.
+- Error handler
+- Not allowed handler
+- Research about OPTIONS and HEAD methods.
+- Customize the 404 page that's gonna be returned in case someone wonders over deep waters.
+- Extract the parameters fetching code into *Common classes.
+- Replaced null with the type's default values like '' for string or -1 for int, etc.
+- Extract synonym sets into another table.
+- Schemas of OAuth tables
+- Comment every field with a type
+- Decide what to do with IDs (in the end, the synsets' ids were chosen to be used as senses' ids while words' ids were chosen to
+remain the same).
+- Crypto library takes a lot of time (roughly 300 ms) to encrypt. (The solution was to change the method used from encryptWithPassword to
+encrypt()).
+- JWT are very long (1200 chars). (The reason was that I was including the $scopes array of objects into the payload. After
+removing the array and including the CSV version, the token got reduced to 571 chars).
+- Renamed everything with 'oauth' to 'oauth2'.
+- limit_clients_to_scopes. Refactor a little bit ScopeRepository to replace two methods with one or adhere to the standard procedure
+where getScopeByName simply fetches the scopes whereas finalizeScopes will handle all of the logic. (All logic went into one method).
+- Scope validation finally implemented.
+- Authentication
+- Dotenv
+- Database migrations (also pre-population it with the data)
+- Database seeding
+- Implement repository pattern for words, users, etc.
+- Scope parser.
+- Changed INTEGER data types in some tables to TINYINT where applicable.
+- Pre-calculating aggregate data
+- Triggers and procedures for tables.
+- Extracted queries from migrations into Queries class.
+- Use compound primary keys when possible.
+- Word routes addition (learning words, mastered words, likes, etc.)
+- Decide what to do with words that has / in them (this problem got solved by changing the route).
+- Activity feed routes, user routes.
+- Word of the day route.
+- Denying any POST and PUT requests with Content-Type not equal to 'application/json'
+- It has been decided to fetch word's pronunciation data along with the main query. This is justified when the amount of
+duplicate data in the query is small (as in my case).
+- Started documenting the endpoints because it can get REAL messy (check endpoints_docs file).
+- Returned back to word and senses separation in JSON output.
+- It has been decided that removing 'cased' functionality from the database will do nothing useful, so it is kept.
+- Extracted all JSON properties into class's constants.
+- Replaced PSR-7 request and response classes in imports to Slim's Request and Response classes.
+- Removed OAuth namespaces from within Model namespace.
+- Removed OAuth namespaces from within Repositories namespace.
+- Removed like functionality from the dictionary table related triggers.
+- Created a separate table for liked words.
+- Created triggers for like/unlike actions.
+- Followers table.
+- Followers table related triggers.
+- Extracted parts of speech into a separate table.
+- Extracted cursor-related parameters fetching into a separate method to avoid code duplication.
+- Creation of TypeConverter and TypeRecognizer classes.
+- Debugging functionality for ErrorHandler
+- Replaced with_* parameters with *_required parameters.
+- Instead of extracting all of the parameters keys into a class constant, it is much easier to extract them to the class
+and use them from there. As a result, a class has been made called Parameters with all of the necessary parameters in it.
+- Reimplemented scope validation.
+- Resolved issue with using cursors as GET parameters since the exception is thrown each time it is done. The reason was that instead of
+encoding previous cursor I unintentionally called decoding function which returned gibberish as a result.
+- It has been decided to not create another, more lightweight words searching endpoint since the current one does its job very well.
+- Added verify-credentials endpoint like Twitter has.
+- Added important fields in verify-credentials for first-party clients and resolved issue with including `is_activated` field
+when returning followers or friends of a particular user.
+- Cursoring
+- Fixed Cursorer since some bugs have surfaced as of recently.
+- Refactored ParametersCommon class because there had been a lot of code duplication.
+- Moved parseScope and parseScopes methods into the Scope class.
+- Implemented cursor validation.
+- Included `'is_following` property in the user endpoints' responses.
+- Renamed `Enums` package to `Constants`.
+- UsersController, in terms of functionality, is done for now.
+- Mappers and binders.
+- Renamed `OAuthGrantsTable` to `OAuthGrantTypesTable`.
+- Split `Queries` class into multiple classes.
+- `Aliases` class was split into `TableAliases` and `ColumnAliases`.
+- Extractors are done.
+- Split routes `app.php` file into multiple files.
+- `Model\Parameters` namespace was brought to life.
+- `Parameters` class was split into multiple classes.
+- Made isAccessTokenRevoked() and isRefreshTokenRevoked() methods return true if the specified id cannot be found.
+- Had a problem where cursorer's urls were different from the actual ones due to query parameters. The problem is solved now.
+- Implemented words search pagination.
+- Replaced `first_name` and `last_name` columns with a `full_name` column.
+- Added `user_name` column.
+- Removed `dictionary_entry_id` column from words search results.
+- Had to forget about sorting user search results by popularity since cursor-based pagination expects a data set to be sorted
+by a unique and sequential column.
+- Made it so that in the words search results the `category` column now returns `new` value instead of NULL.
+- Reimplemented cursoring to allow more than one value to be used.
+- Renamed classes from the `plural/plural` pattern to `singular/plural` pattern.
+- Extracted request parameters into constants to avoid duplication.
+- Extracted queries' placeholders into constants to avoid duplication.
+- Extracted dependency names from bootstrap/app.php to constants to avoid duplication.
+- Chopped up boostrap/app.php file into multiples files.
+
+TODOs:
+- Look into Cursorer since it throws an exception when provided with null for ItemsWrapper and a valid cursor.
+- Decide what to do with attributes passed through JSON web tokens.
+- Loose database tight coupling.
+- Should've used type declarations from beginning.
+- Insert into database information about assets location (i.e. url, path, etc.). Also, decide whether to include extension or not as well as
+whether to encode path or not.
+- Decide whether I really need config folder since it can easily be replaced with class constants.
+- Word's likes, learning, and mastered endpoints.
+- Change up word categories' endpoints.
+- Think about changing words to entries.
+- Protect register route with client's auth.
+- Trends
+- Feed
+- memcached
+- Keeping a history of changes in the db
+- Soft-delete vs logical delete
+- rate-limiter
+- Think about user suggestions.
+- Research on partitioning
+- When deploying, check php.ini file for display_errors and error_reporting flags.
+- Storage keys permissions when deploying

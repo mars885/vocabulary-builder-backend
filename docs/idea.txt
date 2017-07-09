@@ -1,0 +1,10 @@
+The idea is to create an Android app that will help people master the vocabulary they're struggling with.
+The basic functionality of the app consists of the following:
+1. The ability to look up a word.
+2. If the word does not exist, give a user the option of submitting the request for a new word (something like
+'Help us make the dictionary even better').
+3. The ability to mark the word as learning if the user desires to master that word.
+4. The ability to master the words through quizzes.
+5. A lot of preset quizzes types (listening quiz, definitions quiz, words quiz, etc.) for this day, last day, last week, etc.
+6. The ability to search users and see what words they're learning, what words they have mastered, their favorites, etc.
+7. Trending words, i.e. words that are being learnt by quite a few people.

@@ -1,0 +1,25 @@
+<?php
+
+use App\Database\Queries;
+use $useClassName;
+
+class $className extends $baseClassName {
+
+
+
+
+    public function up() {
+        $this->execute(Queries::methodName());
+    }
+
+
+
+
+    public function down() {
+        $this->execute(Queries::methodName());
+    }
+
+
+
+
+}
